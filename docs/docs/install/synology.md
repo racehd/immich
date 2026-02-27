@@ -138,9 +138,10 @@ Docker by default assigns dynamic subnets to bridge networks which can change wh
 Go to the **Container** section. Click on `immich_server` and scroll down on **General** to find the IP address.
 ![Container IP](../../static/img/synology-container-ip.png)
 
-## Step 2. Add network configuration 
+## Step 2. Add network configuration
 
 Add the following network configuration at the end of your `docker-compose.yml` file:
+
 ```yaml
 networks:
   immich-network:
@@ -151,11 +152,12 @@ networks:
           gateway: 172.20.0.1
 ```
 
-If your docker container is running on a different subnet then update accordingly. 
+If your docker container is running on a different subnet then update accordingly.
 
 ## Step 3. Add network to each service
 
 Add the network to each service (immich-server, immich-machine-learning, redis, database):
+
 ```yaml
 services:
   immich-server:
@@ -179,9 +181,10 @@ services:
       - immich-network
 ```
 
-Save your changes. Synology will ask if you want to save changes only or rebuild containers. Select rebuild containers. 
+Save your changes. Synology will ask if you want to save changes only or rebuild containers. Select rebuild containers.
 
 ## Step 4. Update Firewall Rules, if necessary
 
 If your firewall rules were not already set for this subnet, the firewall rules will need to be updated. See [Step 4 - Configure Firewall Settings](#step-4---configure-firewall-settings).
+
 </details>
